@@ -4,6 +4,10 @@ const regex = require('./formats');
 const foreach = require('lodash/forEach');
 const orderBy = require('lodash/orderBy');
 
+/**
+ * @string date: 10/10/2020
+ * @string format: dd/mm/yyyy
+ */
 module.exports = function (date, format) {
     let formatRegex = format.replace(/\//g, "\\/");
     let indexMapDate = [];
@@ -32,18 +36,11 @@ module.exports = function (date, format) {
         });
     }
 
+    const result = setDateFormat(objResult);
     return {
         isValid,
-        get(name){
-            if (objResult.hasOwnProperty(name)){
-                return objResult[name];
-            }
-
-            return false;
-        },
-
         date(){
-            return setDateFormat(objResult);
+            return result
         }
     }
 }

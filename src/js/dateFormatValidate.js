@@ -69,23 +69,23 @@ module.exports = function (date, format) {
     const count = function() {
 
         if (months){
-            return `${months} mese${many(months)}`;
+            return `${months} mese${plural(months)}`;
         }
 
         if (days){
-            return `${days} dia${many(days)}`;
+            return `${days} dia${plural(days)}`;
         }
 
         if (hours){
-            return `${hours} hora${many(hours)}`
+            return `${hours} hora${plural(hours)}`
         }
 
         if (minutes){
-            return `${minutes} minuto${many(minutes)}`
+            return `${minutes} minuto${plural(minutes)}`
         }
     }
 
-    const many = (param) => param > 1 ? 's' : '';
+    const plural = (param) => param > 1 ? 's' : '';
     const countup = function () {
         if (!ascendant){
             throw new SyntaxError(`Data inválida. A data deve ser maior do que agora!`);
